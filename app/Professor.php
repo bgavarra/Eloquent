@@ -9,4 +9,5 @@ class Professor extends Model
 {
     use softDeletes;
     protected $guarded = [];
+
 }

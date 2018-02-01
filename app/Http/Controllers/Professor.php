@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use App\Professor;
 
 class ProfessorController extends Controller
@@ -10,7 +12,9 @@ class ProfessorController extends Controller
 
     public function index()
     {
-        return view('professores');
+      $profs = Professor::all();
+
+      return view('professores',['professores' => $profs]);
     }
 
 

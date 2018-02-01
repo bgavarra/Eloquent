@@ -20,12 +20,29 @@ class Aluno extends Model
     }
 
 
-
-    public function exercicio2($data){
-
+    public function exercicio2(){
+      Aluno::where('status', 'aprovado')->first();
     }
 
-    public function exercicio5(Aluno $aluno){
+    public function exercicio4($request, $id){
+      $aluno_novo = Aluno::find($id);
+      $aluno_novo->nome=$request->nome;
+      $aluno_novo->serie=$request->serie;
+      $aluno_novo->turma=$request->turma;
+      $aluno_novo->faltas=$request->faltas;
+      $aluno_novo->media=$request->media;
+      $aluno_novo->save();
+      return back();
+    }
+
+    public function exercicio5(){
+      Aluno::where('media', '>', 6.90)
+            ->update(['status' => 'aprovado']);
+      Aluno::where('media', '<', 5)
+            ->update(['status' => 'reprovado']);
+      Aluno::where('media', '>', 5)
+            ->where('media','<',7)
+            ->update(['status' => 'em recuperação']);
 
     }
 

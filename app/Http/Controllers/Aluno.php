@@ -13,7 +13,8 @@ class AlunoController extends Controller
     public function index()
     {
         $alunos = Aluno::all();
-
+        $status = new Aluno;
+        $status->exercicio5();
         return view('alunos',['alunos' => $alunos]);
     }
 
@@ -34,19 +35,13 @@ class AlunoController extends Controller
 
     public function atualizaAluno(Request $request, $id)
     {
-      $aluno_novo = Aluno::find($id);
-      $aluno_novo->nome=$request->nome;
-      $aluno_novo->serie=$request->serie;
-      $aluno_novo->turma=$request->turma;
-      $aluno_novo->faltas=$request->faltas;
-      $aluno_novo->media=$request->media;
-      $aluno_novo->save();
+      $atualiza = new Aluno;
+      $atualiza->exercicio4($request,$id);
       return back();
     }
 
     public function deletaAluno($id)
     {
-
       $aluno_novo = Aluno::find(1);
       $aluno_novo->delete();
       return back();
