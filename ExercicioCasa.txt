@@ -1,0 +1,121 @@
+exercicio 1
+
+$aluno= new Aluno;
+Aluno::where('media', '>', 6.90)
+      ->update(['status' => 'aprovado']);
+Aluno::where('media', '<', 5)
+      ->update(['status' => 'reprovado']);
+Aluno::where('media', '>', 5)
+      ->where('media','<',7)
+      ->update(['status' => 'em recuperação']);
+
+
+exercicio 2
+
+$aluno= new Aluno;
+public function exercicio2(){
+  Aluno::where('status', 'aprovado')->first();
+}
+
+
+exercicio 3
+
+$aluno= new Aluno;
+$mediaDeMedias = App\Aluno::avg('media')
+
+
+exercicio 4
+
+Na model:
+public function exercicio4($request, $id){
+  $aluno_novo = Aluno::find($id);
+  $aluno_novo->nome=$request->nome;
+  $aluno_novo->serie=$request->serie;
+  $aluno_novo->turma=$request->turma;
+  $aluno_novo->faltas=$request->faltas;
+  $aluno_novo->media=$request->media;
+  $aluno_novo->save();
+  return back();
+}
+No controller:
+public function atualizaAluno(Request $request, $id)
+{
+  $atualiza = new Aluno;
+  $atualiza->exercicio4($request,$id);
+  return back();
+}
+
+
+exercicio 5
+
+Na model:
+public function exercicio5(){
+  Aluno::where('media', '>', 6.90)
+        ->update(['status' => 'aprovado']);
+  Aluno::where('media', '<', 5)
+        ->update(['status' => 'reprovado']);
+  Aluno::where('media', '>', 5)
+        ->where('media','<',7)
+        ->update(['status' => 'em recuperação']);
+
+}
+No controller:
+public function index()
+{
+    $alunos = Aluno::all();
+    $status = new Aluno;
+    $status->exercicio5();
+    return view('alunos',['alunos' => $alunos]);
+}
+
+
+exercicio6
+
+$professores = new Professor;
+$professores=Professor::where('disciplina',5)
+                      ->where('horas_aula', '<', 60)
+                      ->where('salario','>',12000)
+                      ->orderBy('salario','asc')
+                      ->take(5)
+                      ->get();
+
+
+exercicio 7
+
+$reprovados = new Aluno;
+$reprovados = Aluno::where('status','reprovado')->get();
+
+
+exercicio 8
+
+Na model:
+Use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Aluno extends Model
+{
+    use softDeletes;
+    protected $dates = ['deleted_at'];
+
+    .......
+
+}
+Na migration:
+public function up()
+{
+    Schema::create('alunos', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('registro')->unsigned();
+        $table->string('nome');
+        $table->integer('serie')->unsigned();
+        $table->integer('turma')->unsigned();
+        $table->decimal('media', 4, 2);
+        $table->integer('faltas')->unsigned();
+        $table->string('status')->default('em analise');
+        $table->timestamps();
+        $table->softDeletes();
+    });
+
+
+exercicio 9
+
+App\Professor::where('horas_aula','<',50)->delete();
