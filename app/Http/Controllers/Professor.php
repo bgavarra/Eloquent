@@ -16,17 +16,40 @@ class ProfessorController extends Controller
 
     public function insereProfessor(Request $request)
     {
-        return back();
+      $prof=new Professor;
+      $prof->nome=$request->nome;
+      $prof->credencial=$request->credencial;
+      $prof->disciplina=$request->disciplina;
+      $prof->quantidade_turmas=$request->quantidade_turmas;
+      $prof->total_alunos=$request->total_alunos;
+      $prof->aprovados=$request->aprovados;
+      $prof->horas_aula=$request->horas_aula;
+      $prof->salario=$request->salario;
+      $prof->email=$request->email;
+      $prof->save();
+      return back();
     }
 
     public function atualizaProfessor(Request $request, $id)
     {
-        return back();
+      $prof = Professor::find($id);
+      $prof->nome=$request->nome;
+      $prof->credencial=$request->credencial;
+      $prof->disciplina=$request->disciplina;
+      $prof->quantidade_turmas=$request->quantidade_turmas;
+      $prof->total_alunos=$request->total_alunos;
+      $prof->aprovados=$request->aprovados;
+      $prof->horas_aula=$request->horas_aula;
+      $prof->salario=$request->salario;
+      $prof->email=$request->email;
+      $prof->save();
+      return back();
     }
 
 
     public function deletaProfessor($id)
     {
-        return back();
+      $prof = Professor::find(1);
+      $prof->delete();
     }
 }

@@ -21,6 +21,11 @@ Route::post('alunos\insere', 'AlunoController@insereAluno');
 Route::put('alunos\atualiza\{id}', 'AlunoController@atualizaAluno');
 Route::delete('alunos\deleta\{id}', 'AlunoController@deletaAluno');
 
+Route::get('professores', 'ProfessorController@index');
+Route::post('professor\insere', 'ProfessorController@insereAluno');
+Route::put('professor\atualiza\{id}', 'ProfessorController@atualizaAluno');
+Route::delete('professores\deleta\{id}', 'ProfessorController@deletaAluno');
+
 //exemplo de funçao na model
 Route::post('alunos\exemplo','AlunoController@getAluno');
 

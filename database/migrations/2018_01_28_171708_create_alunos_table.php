@@ -23,7 +23,7 @@ class CreateAlunosTable extends Migration
             $table->integer('faltas')->unsigned();
             $table->string('status')->default('em analise');
             $table->timestamps();
-            //$table->softDeletes();
+            $table->softDeletes();
         });
     }
 

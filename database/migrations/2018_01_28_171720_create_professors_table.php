@@ -25,6 +25,7 @@ class CreateProfessorsTable extends Migration
             $table->decimal('salario', 7, 2);
             $table->string('email');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
