@@ -22,13 +22,15 @@ Route::put('alunos\atualiza\{id}', 'AlunoController@atualizaAluno');
 Route::delete('alunos\deleta\{id}', 'AlunoController@deletaAluno');
 
 Route::get('professores', 'ProfessorController@index');
-Route::post('professor\insere', 'ProfessorController@insereAluno');
-Route::put('professor\atualiza\{id}', 'ProfessorController@atualizaAluno');
-Route::delete('professores\deleta\{id}', 'ProfessorController@deletaAluno');
+Route::post('professor\insere', 'ProfessorController@insereProfessor');
+Route::put('professor\atualiza\{id}', 'ProfessorController@atualizaProfessor');
+Route::delete('professores\deleta\{id}', 'ProfessorController@deletaProfessor');
 
 //exemplo de funçao na model
 Route::post('alunos\exemplo','AlunoController@getAluno');
 
+//exemplo de funçao na model
+Route::post('professor\exemplo','AlunoController@getProfessor');
 
 //ProfessorController
 

@@ -53,7 +53,18 @@ class ProfessorController extends Controller
 
     public function deletaProfessor($id)
     {
-      $prof = Professor::find(1);
+      $prof = Professor::find($id);
       $prof->delete();
+      return back();
+    }
+
+    public function getProfessor(Request $request){
+
+        $professor = new Professor;
+
+        $resposta = $professor->exemplo($request->id);
+
+        dd($resposta);
+
     }
 }

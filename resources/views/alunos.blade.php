@@ -3,7 +3,7 @@
 
 
 @section('content')
-       
+
 
 <div class="well panel col-xs-12 col-md-12">
 
@@ -26,8 +26,8 @@
             <div class="col-xs-1">
               <input type="integer" class="form-control" name="registro" id="registro" placeholder="3000">
             </div>
-          
-          
+
+
             <label for="nome" class="col-xs-2 control-label">Nome:</label>
             <div class="col-xs-2">
               <input type="text" class="form-control" name="nome" id="nome" placeholder="Joel Santana">
@@ -52,7 +52,7 @@
               <input type="float" class="form-control" name="media" id="media" placeholder="10.00">
             </div>
 
-         
+
             <label for="faltas" class="col-xs-2 control-label">Faltas:</label>
             <div class="col-xs-1">
               <input type="integer" class="form-control" name="faltas" id="faltas" placeholder="0 - 50">
@@ -60,13 +60,13 @@
           </div>
 
           <br><br><br>
-          
-                
+
+
           <div class="text-right">
               <button type="submit" class="btn btn-success waves-effect waves-light">Inserir Aluno</button>
           </div>
         </form>
-        
+
         <!-- teste de função da model -->
         <div>
             <form class="" action="{{action('AlunoController@getAluno')}}" enctype="multipart/form-data" method="POST">
@@ -112,7 +112,7 @@
           <tbody class="">
           <!-- lista alunos do banco -->
             @foreach ($alunos as $aluno)
-              
+
                 <tr>
                   <td>{{$aluno->id}}</td>
                   <td>{{$aluno->registro}}</td>
@@ -123,7 +123,7 @@
                   <td>{{$aluno->faltas}}</td>
                   <td>{{$aluno->status}}</td>
                   <td class="col-xs-2">
-                     
+
                       <form class="col-xs-12" action="{{action('AlunoController@deletaAluno', ['id' => $aluno->id])}}" method="POST">
                           <a class="btn btn-md btn-info" data-toggle="modal" data-target="#modal-editar-aluno-{{$aluno->id}}">
                             <i class="material-icons" data-toggle="tooltip" data-placement="top" data-title="Editar">edit</i>
@@ -138,10 +138,10 @@
                           </button>
                       </form>
 
-                      
+
                     </td>
                   </tr>
-             
+
             @endforeach
           </tbody>
         </table>
@@ -193,7 +193,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            
+
                             <button type="submit" class="btn btn-success waves-effect waves-light">Atualizar</button>
                         </div>
                     </form>
@@ -204,7 +204,7 @@
 
 {!! csrf_field() !!}
 
-  
+
 
 
 </div>
